@@ -41,6 +41,7 @@
     }
     .stamp{opacity:0;}
     .slide.go .stamp{animation:stampIn .5s cubic-bezier(.34,1.56,.64,1) forwards;}
+    .slide.go .stamp.d1{animation-delay:.08s;}
     .slide.go .stamp.d3{animation-delay:.36s;}
     @keyframes checkIn{
       0%{transform:scale(0) rotate(-25deg);opacity:0;}
@@ -54,17 +55,11 @@
       40%{background:var(--accent-s);border-radius:4px;padding:0 4px;}
       100%{background:transparent;}
     }
-    /* mini countUp in after card */
-    @keyframes countGlow{
-      0%{opacity:.4;}50%{opacity:1;}100%{opacity:1;}
-    }
     .pgnum{position:absolute;bottom:20px;left:26px;font-size:11px;color:var(--muted);letter-spacing:.04em;}
     .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;
          color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:2px 8px;}
-
-    /* ── Slide 0: Before/After ── */
+    /* Slide 0: Before/After */
     .ba-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-top:14px;}
-    .ba-arrow{font-size:18px;color:var(--muted);text-align:center;flex-shrink:0;}
     .ba-label{font-size:9px;font-weight:700;letter-spacing:.1em;margin-bottom:5px;}
     .before-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
                  padding:10px;height:160px;display:flex;flex-direction:column;}
@@ -73,16 +68,26 @@
     .before-text{font-size:9.5px;color:var(--dim);line-height:1.75;flex:1;overflow:hidden;}
     .after-num{font-size:clamp(36px,11vw,44px);font-weight:900;color:var(--accent);
                line-height:1;letter-spacing:-.03em;flex:1;display:flex;align-items:center;}
-    .after-sub{font-size:9px;color:rgba(255,255,255,.45);line-height:1.5;}
-    .after-dots{display:flex;gap:3px;margin-top:6px;}
-    .after-dot{width:4px;height:4px;border-radius:50%;}
-    /* mini progress bar in after card */
     .after-bar-wrap{height:3px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:6px;}
     .after-bar{height:100%;background:var(--accent);border-radius:2px;width:0%;
                transition:width 2s cubic-bezier(.4,0,.2,1);}
-
-    /* ── Slide 1: Steps ── */
-    .step-item{opacity:0;transform:translateX(-16px);transition:opacity .5s ease,transform .5s ease;}
+    .after-dots{display:flex;gap:3px;margin-top:6px;}
+    .after-dot{width:4px;height:4px;border-radius:50%;}
+    /* Slide 1: Core definition */
+    .io-card{display:flex;align-items:center;gap:8px;background:var(--card);
+             border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+    .io-side{flex:1;text-align:center;}
+    .io-label{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--muted);}
+    .io-label.out{color:var(--accent);}
+    .io-text{font-size:12px;color:var(--dim);margin-top:4px;line-height:1.5;}
+    .io-text.out{color:var(--text);font-weight:700;}
+    .io-arrow{font-size:20px;color:var(--accent);flex-shrink:0;}
+    .attr-row{display:flex;align-items:center;gap:10px;padding:9px 12px;
+              background:var(--card);border-radius:8px;border:1px solid var(--border);}
+    .attr-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+    .attr-text{font-size:12px;color:var(--text);font-weight:600;}
+    /* Slide 2: Steps */
+    .step-item{opacity:0;transform:translateX(-16px);transition:opacity .48s ease,transform .48s ease;}
     .step-row{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;
               background:var(--card);border-radius:10px;border:1px solid var(--border);}
     .step-num{min-width:26px;height:26px;border-radius:50%;background:var(--accent);
@@ -93,8 +98,7 @@
     .step-desc{font-size:11px;color:var(--dim);margin-top:3px;line-height:1.6;}
     .step-arrow{opacity:0;transform:translateX(-8px);transition:opacity .4s ease,transform .4s ease;
                 text-align:center;font-size:13px;color:var(--muted);}
-
-    /* ── Slide 2: Keyword rows ── */
+    /* Slide 3: Keyword rows */
     .kw-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
     .kw-row:last-child{border-bottom:none;}
     .kw-chip{font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-s);
@@ -102,8 +106,7 @@
     .kw-arr{font-size:11px;color:var(--muted);}
     .kw-anim{font-size:12px;color:var(--text);flex:1;font-weight:600;}
     .kw-eg{font-size:10px;color:var(--dim);flex-shrink:0;}
-
-    /* ── Slide 3: Metrics ── */
+    /* Slide 4: Metrics */
     .met-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
     .met-box{background:var(--card);border:1px solid var(--border);
              border-radius:12px;padding:18px 10px 14px;text-align:center;}
@@ -115,8 +118,7 @@
              gap:16px;margin-top:12px;}
     .met-zero{font-size:clamp(32px,10vw,42px);font-weight:900;color:var(--text);line-height:1;}
     .met-zero-lbl{font-size:12px;color:var(--dim);line-height:1.5;}
-
-    /* ── Slide 4: Myth card ── */
+    /* Slide 5: Myth card */
     .myth-w{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;}
     .myth-label{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--muted);}
     .myth-txt{font-size:15px;font-weight:700;color:var(--text);margin-top:6px;
@@ -129,15 +131,13 @@
     .myth-r-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--accent);}
     .myth-r-txt{font-size:15px;font-weight:700;color:var(--text);margin-top:6px;line-height:1.5;}
     .check-ic{opacity:0;display:inline-block;}
-
-    /* ── Slide 5: Closing ── */
+    /* Slide 6: Closing */
     .tw-line{font-size:clamp(20px,6.5vw,26px);font-weight:900;color:var(--text);min-height:1.45em;line-height:1.45;}
     .pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;}
     .pf-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
     .pf-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;vertical-align:middle;}
     .pf-name{font-size:12px;font-weight:700;color:var(--text);}
     .pf-desc{font-size:10px;color:var(--dim);margin-top:3px;line-height:1.4;}
-
     /* Nav */
     #dots{position:fixed;right:14px;top:50%;transform:translateY(-50%);
           display:flex;flex-direction:column;gap:6px;z-index:100;}
@@ -154,7 +154,7 @@
 <body>
 <div class="deck">
 
-  <!-- SLIDE 0: Before / After -->
+  <!-- SLIDE 0: Hook / Before-After -->
   <div class="slide go" id="s0">
     <div style="display:flex;align-items:center;justify-content:space-between;">
       <span class="tag ai">严谨科普</span>
@@ -166,10 +166,7 @@
     <div class="ai d1" style="margin-top:14px;font-size:clamp(17px,5.5vw,21px);font-weight:900;color:var(--text);line-height:1.35;">
       一段文字，<br>怎么变成动画网页？
     </div>
-
-    <!-- Before / After -->
     <div class="ba-wrap ai d2">
-      <!-- Before -->
       <div>
         <div class="ba-label" style="color:var(--muted);">BEFORE</div>
         <div class="before-card">
@@ -183,17 +180,13 @@
           </div>
         </div>
       </div>
-
-      <!-- Arrow -->
-      <div class="ba-arrow">→</div>
-
-      <!-- After -->
+      <div style="font-size:18px;color:var(--muted);text-align:center;">→</div>
       <div>
         <div class="ba-label" style="color:var(--accent);">AFTER</div>
         <div class="after-card">
-          <div class="after-sub">AI 收入增速</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:4px;">AI 收入增速</div>
           <div class="after-num">
-            <span id="afterNum">0</span><span style="font-size:22px;color:var(--accent);">%</span>
+            <span id="afterNum">0</span><span style="font-size:20px;color:var(--accent);">%</span>
           </div>
           <div class="after-bar-wrap"><div class="after-bar" id="afterBar"></div></div>
           <div class="after-dots">
@@ -204,15 +197,53 @@
         </div>
       </div>
     </div>
-
     <div class="ai d3" style="margin-top:14px;font-size:12px;color:var(--dim);line-height:1.7;">
       输入主题或口播稿 → <span style="color:var(--text);font-weight:700;">带动画的 HTML，自动生成</span>
     </div>
-    <div class="pgnum">01 / 06</div>
+    <div class="pgnum">01 / 07</div>
   </div>
 
-  <!-- SLIDE 1: 三阶段（逐段入场） -->
+  <!-- SLIDE 1: 核心定义 [NEW] -->
   <div class="slide" id="s1">
+    <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">CORE DEFINITION</div>
+    <div class="stamp d1" style="margin-top:12px;display:inline-block;font-size:12px;font-weight:800;
+         color:var(--accent);background:var(--accent-s);border:1.5px solid var(--accent);
+         border-radius:7px;padding:5px 12px;letter-spacing:.01em;">
+      text-to-animated-html
+    </div>
+    <div class="ai d2" style="margin-top:12px;font-size:clamp(17px,5.5vw,20px);font-weight:900;color:var(--text);line-height:1.4;">
+      把任何内容，变成<br>平台级动画网页
+    </div>
+    <div class="io-card ai d3" style="margin-top:16px;">
+      <div class="io-side">
+        <div class="io-label">INPUT</div>
+        <div class="io-text">主题 / 文字<br>口播脚本</div>
+      </div>
+      <div class="io-arrow">→</div>
+      <div class="io-side">
+        <div class="io-label out">OUTPUT</div>
+        <div class="io-text out">带动画的 HTML<br>即开即用</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
+      <div class="attr-row ai d4">
+        <div class="attr-dot"></div>
+        <div class="attr-text">关键词自动识别，精准匹配动效</div>
+      </div>
+      <div class="attr-row ai d5">
+        <div class="attr-dot"></div>
+        <div class="attr-text">4 种平台风格，小红书 / X / TikTok / Dark Pro</div>
+      </div>
+      <div class="attr-row ai d6">
+        <div class="attr-dot"></div>
+        <div class="attr-text">零外部依赖，单文件，离线可用</div>
+      </div>
+    </div>
+    <div class="pgnum">02 / 07</div>
+  </div>
+
+  <!-- SLIDE 2: 三阶段 -->
+  <div class="slide" id="s2">
     <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">WORKFLOW</div>
     <div class="ai d1" style="font-size:clamp(20px,6vw,24px);font-weight:900;color:var(--text);margin-top:6px;line-height:1.3;margin-bottom:20px;">
       三个阶段，全自动
@@ -251,11 +282,11 @@
         </div>
       </div>
     </div>
-    <div class="pgnum">02 / 06</div>
+    <div class="pgnum">03 / 07</div>
   </div>
 
-  <!-- SLIDE 2: 关键词映射 -->
-  <div class="slide" id="s2">
+  <!-- SLIDE 3: 关键词映射 -->
+  <div class="slide" id="s3">
     <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">KEYWORD DETECTION</div>
     <div class="ai d1" style="font-size:clamp(18px,6vw,22px);font-weight:900;color:var(--text);margin-top:6px;line-height:1.3;margin-bottom:14px;">
       关键词 → 动画<br>自动识别
@@ -286,11 +317,11 @@
         <span class="kw-anim">stampIn 大字弹出</span><span class="kw-eg">首次出现</span>
       </div>
     </div>
-    <div class="pgnum">03 / 06</div>
+    <div class="pgnum">04 / 07</div>
   </div>
 
-  <!-- SLIDE 3: 数字 -->
-  <div class="slide" id="s3">
+  <!-- SLIDE 4: 数字 -->
+  <div class="slide" id="s4">
     <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">CAPABILITIES</div>
     <div class="ai d1" style="font-size:clamp(18px,6vw,22px);font-weight:900;color:var(--text);margin-top:6px;line-height:1.3;margin-bottom:18px;">数字说话</div>
     <div class="met-grid ai d2">
@@ -310,11 +341,11 @@
         <div class="met-zero-lbl" id="hlZero">无 CDN · 无框架 · 离线可用</div>
       </div>
     </div>
-    <div class="pgnum">04 / 06</div>
+    <div class="pgnum">05 / 07</div>
   </div>
 
-  <!-- SLIDE 4: Myth card -->
-  <div class="slide" id="s4">
+  <!-- SLIDE 5: Myth card -->
+  <div class="slide" id="s5">
     <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">COGNITIVE SHIFT</div>
     <div class="ai d1" style="font-size:clamp(18px,6vw,22px);font-weight:900;color:var(--text);margin-top:6px;line-height:1.3;margin-bottom:18px;">你以为 vs 实际上</div>
     <div class="myth-w ai d2">
@@ -328,11 +359,11 @@
       <div class="myth-r-lbl"><span class="check-ic" id="checkIc">✓</span>&nbsp;&nbsp;实际上</div>
       <div class="myth-r-txt">只需要告诉 AI<br><span style="color:var(--accent);font-weight:900;">你想讲什么。</span></div>
     </div>
-    <div class="pgnum">05 / 06</div>
+    <div class="pgnum">06 / 07</div>
   </div>
 
-  <!-- SLIDE 5: Closing -->
-  <div class="slide" id="s5">
+  <!-- SLIDE 6: Closing -->
+  <div class="slide" id="s6">
     <div class="ai" style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;">CLOSING</div>
     <div style="margin-top:18px;">
       <div class="tw-line" id="tw0"></div>
@@ -357,7 +388,7 @@
         <div class="pf-desc">暗黑专业<br>金融分析 · 商业报告</div>
       </div>
     </div>
-    <div class="pgnum">06 / 06</div>
+    <div class="pgnum">07 / 07</div>
   </div>
 
 </div>
@@ -432,7 +463,6 @@ function cntUp(el, dur) {
   }, 16);
 }
 
-// mini countUp for after card (no data-cu, uses plain id)
 function cntUpSimple(el, target, dur) {
   el.textContent = '0';
   const inc = target / (dur / 16); let v = 0;
@@ -459,7 +489,6 @@ function trigger(n) {
     setTimeout(() => cntUp(el, 2200), 350);
   });
 
-  // Slide 0: after card animation
   if (n === 0) {
     const afterNum = document.getElementById('afterNum');
     const afterBar = document.getElementById('afterBar');
@@ -473,8 +502,7 @@ function trigger(n) {
     }, 500);
   }
 
-  // Slide 1: step-by-step sequential entry
-  if (n === 1) {
+  if (n === 2) {
     const items  = [
       document.getElementById('step0'),
       document.getElementById('sarr0'),
@@ -498,15 +526,13 @@ function trigger(n) {
     });
   }
 
-  // Slide 3: highlightPulse
-  if (n === 3) {
+  if (n === 4) {
     const hl = document.getElementById('hlZero');
     hl.style.animation = 'none'; void hl.offsetWidth;
     setTimeout(() => { hl.style.animation = 'highlightPulse 2.8s ease forwards'; }, 1200);
   }
 
-  // Slide 4: myth card sequence
-  if (n === 4) {
+  if (n === 5) {
     const strike  = document.getElementById('mythStrike');
     const txt     = document.getElementById('mythTxt');
     const mythR   = document.getElementById('mythR');
@@ -525,8 +551,7 @@ function trigger(n) {
     setTimeout(() => { checkIc.style.animation = 'checkIn .4s cubic-bezier(.34,1.56,.64,1) forwards'; }, 1550);
   }
 
-  // Slide 5: typewriter
-  if (n === 5) {
+  if (n === 6) {
     twTs.forEach(clearTimeout);
     document.getElementById('tw0').textContent = '';
     document.getElementById('tw1').textContent = '';
@@ -537,7 +562,6 @@ function trigger(n) {
   }
 }
 
-// ── CRITICAL: Initialize first slide ──
 slides[0].style.opacity = '1';
 slides[0].style.transform = 'translateY(0)';
 trigger(0); ui();
